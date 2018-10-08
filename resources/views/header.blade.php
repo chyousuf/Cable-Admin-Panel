@@ -391,7 +391,7 @@
                 </a>
                 <ul id="dashboard_dr" class="collapse collapse-level-1">
                     <li>
-                        <a class="active-page" href="{{route('Addcustomer')}}">Analytical</a>
+                        <a class="active-page" href="{{route('Addcustomer')}}">Add Customer</a>
                     </li>
                     <li>
                         <a href="index2.html">Demographic</a>

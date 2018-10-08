@@ -17,7 +17,7 @@
 											<div class="add-friend">
 												<a href="javascript:void(0)" class="inline-block txt-grey">
 													<i class="zmdi zmdi-more"></i>
-												</a>	
+												</a>
 												<span class="inline-block txt-dark">users</span>
 												<a href="javascript:void(0)" class="inline-block text-right txt-grey"><i class="zmdi zmdi-plus"></i></a>
 												<div class="clearfix"></div>
@@ -146,7 +146,7 @@
 													<div class="goto-back">
 														<a  id="goto_back" href="javascript:void(0)" class="inline-block txt-grey">
 															<i class="zmdi zmdi-chevron-left"></i>
-														</a>	
+														</a>
 														<span class="inline-block txt-dark">ryan</span>
 														<a href="javascript:void(0)" class="inline-block text-right txt-grey"><i class="zmdi zmdi-more"></i></a>
 														<div class="clearfix"></div>
@@ -166,7 +166,7 @@
 																			</div>
 																		</div>
 																		<div class="clearfix"></div>
-																	</div>	
+																	</div>
 																</li>
 																<li class="self mb-10">
 																	<div class="self-msg-wrap">
@@ -176,7 +176,7 @@
 																			</div>
 																		</div>
 																		<div class="clearfix"></div>
-																	</div>	
+																	</div>
 																</li>
 																<li class="self">
 																	<div class="self-msg-wrap">
@@ -186,19 +186,19 @@
 																			</div>
 																		</div>
 																		<div class="clearfix"></div>
-																	</div>	
+																	</div>
 																</li>
 																<li class="friend">
 																	<div class="friend-msg-wrap">
 																		<img class="user-img img-circle block pull-left"  src="dist/img/user.png" alt="user"/>
-																		<div class="msg pull-left"> 
+																		<div class="msg pull-left">
 																			<p>Not too bad.</p>
 																			<div class="msg-per-detail  text-right">
 																				<span class="msg-time txt-grey">2:35 pm</span>
 																			</div>
 																		</div>
 																		<div class="clearfix"></div>
-																	</div>	
+																	</div>
 																</li>
 															</ul>
 														</div>
@@ -227,13 +227,13 @@
 										</div>
 									</div>
 								</div>
-									
+
 								<div id="messages_tab" class="tab-pane fade" role="tabpanel">
 									<div class="message-box-wrap">
 										<div class="msg-search">
 											<a href="javascript:void(0)" class="inline-block txt-grey">
 												<i class="zmdi zmdi-more"></i>
-											</a>	
+											</a>
 											<span class="inline-block txt-dark">messages</span>
 											<a href="javascript:void(0)" class="inline-block text-right txt-grey"><i class="zmdi zmdi-search"></i></a>
 											<div class="clearfix"></div>
@@ -347,7 +347,7 @@
 										<div class="add-todo">
 											<a href="javascript:void(0)" class="inline-block txt-grey">
 												<i class="zmdi zmdi-more"></i>
-											</a>	
+											</a>
 											<span class="inline-block txt-dark">todo list</span>
 											<a href="javascript:void(0)" class="inline-block text-right txt-grey"><i class="zmdi zmdi-plus"></i></a>
 											<div class="clearfix"></div>
@@ -420,31 +420,35 @@
 				</ul>
 			</div>
 			<!-- /Right Sidebar Menu -->
-			
-			
-			
+
+
+
 			<!-- Main Content -->
 			<div class="page-wrapper">
 				<div class="container-fluid">
 					<!-- Title -->
 					<div class="row heading-bg">
 						<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-							<h5 class="txt-dark">form picker</h5>
+							<h5 class="txt-dark">ADD Customer</h5>
 						</div>
-					
-						<!-- Breadcrumb -->
-						<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
-							<ol class="breadcrumb">
-								<li><a href="index.html">Dashboard</a></li>
-								<li><a href="#"><span>forms</span></a></li>
-								<li class="active"><span>form-picker</span></li>
-							</ol>
-						</div>
-						<!-- /Breadcrumb -->
-					
+
+
+
 					</div>
 					<!-- /Title -->
-					
+					@if ( $errors->count() > 0 )
+
+						<ul>
+							@foreach( $errors->all() as $message )
+								<div class="alert alert-success">
+									<strong>
+										<li>{{ $message }}</li>
+									</strong>
+								</div>
+
+							@endforeach
+						</ul>
+				@endif
 					<!-- Row -->
 					<div class="row">
 						<div class="col-md-12">
@@ -458,200 +462,89 @@
 								<div class="panel-wrapper collapse in">
 									<div class="panel-body">
 										<div class="form-wrap">
-											<form>
+											<form method="post" action="{{route('insertcustomer')}}" >
+												{{csrf_field()}}
 												<div class="form-group">
-													<label class="control-label mb-10 text-left">Default Text <span class="help"> e.g. "john doe"</span></label>
-													<input type="text" class="form-control" value="john doe...">
+													<label class="control-label mb-10 text-left">Name</label>
+													<input type="text" name="name" class="form-control" value="" placeholder="Name">
 												</div>
 												<div class="form-group">
-													<label class="control-label mb-10 text-left" for="example-email">Email <span class="help"> e.g. "example@gmail.com"</span></label>
-													<input type="email" id="example-email" name="example-email" class="form-control" placeholder="Email">
+													<label class="control-label mb-10 text-left" for="example-email">Father name</label>
+													<input type="text" id="example-email" name="father_name" class="form-control" placeholder="Father name">
 												</div>
 												<div class="form-group">
-													<label class="control-label mb-10 text-left">Password</label>
-													<input type="password" class="form-control" value="password">
+													<label class="control-label mb-10 text-left">Phone number</label>
+													<input type="text" class="form-control" name="phone_number" placeholder="Phone number" value="">
 												</div>
 												<div class="form-group">
-													<label class="control-label mb-10 text-left">Placeholder</label>
-													<input type="text" class="form-control" placeholder="placeholder">
+													<label class="control-label mb-10 text-left">Address </label>
+													<input type="text" name="address" class="form-control" placeholder="Address">
 												</div>
 												<div class="form-group">
-													<label class="control-label mb-10 text-left">Text area</label>
-													<textarea class="form-control" rows="5"></textarea>
+													<label class="control-label mb-10 text-left">Region</label>
+													<input type="text" name="region" class="form-control" placeholder="Region">
 												</div>
+
+												<div class="form-group">
+													<label class="control-label mb-10 text-left">Amount Paid</label>
+													<input type="text" class="form-control" name="amount_paid" placeholder="Amount Paid">
+												</div>
+												<div class="form-group">
+													<label class="control-label mb-10 text-left">Mountly Amount</label>
+													<input type="text" class="form-control" name="monthly_amount" placeholder="Monthly Amount">
+												</div>
+
 												<div class="form-group mt-30 mb-30">
-													<label class="control-label mb-10 text-left">select</label>
-													<select class="form-control">
-														<option>1</option>
-														<option>2</option>
-														<option>3</option>
-														<option>4</option>
-														<option>5</option>
+													<label class="control-label mb-10 text-left">Payment Status</label>
+													<select name="payment_status" class="form-control">
+														<option value="paid" >Paid</option>
+														<option value="paid">Unpaid</option>
 													</select>
 												</div>
-												<div class="form-group mb-30">
-													<label class="control-label mb-10 text-left">Radio</label>
-													<div class="radio radio-info">
-														<input type="radio" name="radio" id="radio1" value="option1" checked="">
-														<label for="radio1">
-															M
-														</label>
-													</div>
-													<div class="radio radio-info">
-														<input type="radio" name="radio" id="radio2" value="option2" checked="">
-														<label for="radio2">
-															F
-														</label>
-													</div>	
+												<div class="form-group mt-30 mb-30">
+													<label class="control-label mb-10 text-left">Payment Collected by</label>
+													<select name="payment_collected_by" class="form-control">
+														<option value="paid" >Paid</option>
+													</select>
 												</div>
-												<div class="form-group mb-30">
-													<label class="control-label mb-10 text-left">Checkbox</label>
-													<div class="checkbox">
-														<input id="checkbox1" type="checkbox">
-														<label for="checkbox1">
-															Default
-														</label>
-													</div>
-													<div class="checkbox checkbox-primary">
-														<input id="checkbox2" type="checkbox" checked="">
-														<label for="checkbox2">
-															Primary
-														</label>
-													</div>
-													<div class="checkbox checkbox-success">
-														<input id="checkbox3" type="checkbox">
-														<label for="checkbox3">
-															Success
-														</label>
-													</div>	
-												</div>
-												<div class="form-group mb-30">
-													<label class="control-label mb-10 text-left">File upload</label>
-													<div class="fileinput fileinput-new input-group" data-provides="fileinput">
-														<div class="form-control" data-trigger="fileinput"> <i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span></div>
-														<span class="input-group-addon fileupload btn btn-info btn-anim btn-file"><i class="fa fa-upload"></i> <span class="fileinput-new btn-text">Select file</span> <span class="fileinput-exists btn-text">Change</span>
-														<input type="file" name="...">
-														</span> <a href="#" class="input-group-addon btn btn-danger btn-anim fileinput-exists" data-dismiss="fileinput"><i class="fa fa-trash"></i><span class="btn-text"> Remove</span></a> 
-													</div>
-												</div>
-												<div class="form-group mb-0">
-													<label class="control-label mb-10 text-left">Helping text</label>
-													<input type="text" class="form-control" placeholder="Helping text">
-													<span class="help-block mt-10 mb-0"><small>A block of help text that breaks onto a new line and may extend beyond one line.</small></span>
-												</div>
-											</form>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- /Row -->
-				
-					<!-- Row -->
-					<div class="row">
-						<div class="col-md-12">
-							<div class="panel panel-default card-view">
-								<div class="panel-heading">
-									<div class="pull-left">
-										<h6 class="panel-title txt-dark">Date Range Picker</h6>
-									</div>
-									<div class="clearfix"></div>
-								</div>
-								<div class="panel-wrapper collapse in">
-									<div class="panel-body">
-										<div class="form-wrap">
-											<form>
-												<div class="row">
-													<div class="col-lg-4">
-														<div class="form-group mb-0">
-															<label class="control-label mb-10 text-left">Date Range Pick</label>
-															<input class="form-control input-daterange-datepicker" type="text" name="daterange" value="01/01/2016 - 01/31/2016"/>
-														</div>
-													</div>
-													<div class="col-lg-4">
-														<div class="form-group mb-0">
-															<label class="control-label mb-10 text-left">Date Range With Time</label>
-															<input type="text" class="form-control input-daterange-timepicker" name="daterange" value="01/01/2016 1:30 PM - 01/01/2016 2:00 PM"/>
-														</div>
-													</div>
-													<div class="col-lg-4">
-														<div class="form-group mb-0">
-															<label class="control-label mb-10 text-left">Limit Selectable Dates</label>
-															<input class="form-control input-limit-datepicker" type="text" name="daterange" value="06/01/2016 - 06/07/2016"/>
-														</div>
-													</div>
-												</div>
-											</form>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- /Row -->
-					
-					<!-- Row -->
-					<div class="row">
-						<div class="col-md-12">
-							<div class="panel panel-default card-view">
-								<div class="panel-heading">
-									<div class="pull-left">
-										<h6 class="panel-title txt-dark">Date time picker</h6>
-									</div>
-									<div class="clearfix"></div>
-								</div>
-								<div class="panel-wrapper collapse in">
-									<div class="panel-body">
-										<div class="form-wrap">
-											<form>
-												<div class="row">
-													<div class="col-sm-6">
-														<div class="form-group">
-															<label class="control-label mb-10 text-left">date time pick</label>
-															<div class='input-group date' id='datetimepicker1'>
-																<input type='text' class="form-control" />
-																<span class="input-group-addon">
+												<div class="col-sm-12">
+													<div class="form-group">
+														<label class="control-label mb-10 text-left">Connection Date</label>
+														<div class='input-group date' id='datetimepicker1'>
+															<input type='text' name="connection_date" class="form-control" />
+															<span class="input-group-addon">
 																	<span class="fa fa-calendar"></span>
 																</span>
-															</div>
-														</div>
-													</div>
-													<div class="col-sm-6">
-														<div class="form-group">
-															<label class="control-label mb-10 text-left">time pick</label>
-															<div class='input-group date' id='datetimepicker2'>
-																<input type='text' class="form-control" />
-																<span class="input-group-addon">
-																	<span class="fa fa-clock-o"></span>
-																</span>
-															</div>
-														</div>
-													</div>
-													<div class="col-sm-6">
-														<label class="control-label mb-10 text-left">inline date pick</label>
-														<div class="form-group">
-															<div class='input-group date' id='datetimepicker3'></div>
-														</div>
-													</div>
-													<div class="col-sm-6">
-														<label class="control-label mb-10 text-left">inline date time pick</label>
-														<div class="form-group">
-															<div class='input-group date' id='datetimepicker4'></div>
 														</div>
 													</div>
 												</div>
-											</form>	
+                                                <div class="col-sm-12">
+                                                    <div class="form-group">
+                                                        <label class="control-label mb-10 text-left">Payment Connection Date</label>
+                                                        <div class='input-group date' id='datetimepicker4'>
+                                                            <input type='text' name="payment_connection_date" class="form-control" />
+                                                            <span class="input-group-addon">
+																	<span class="fa fa-calendar"></span>
+																</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <br>
+                                               <center><input type="submit" name="submit" class="btn btn-success"></center>
+                                            </form>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-					<!-- /Row -->
-				
-				</div>
-				
+
+
+
+					<!-- Row -->
+
+
 			<!-- Footer -->
 			<footer class="footer container-fluid pl-30 pr-30">
 				<div class="row">
@@ -661,52 +554,52 @@
 				</div>
 			</footer>
 			<!-- /Footer -->
-				
+
 			</div>
 			<!-- /Main Content -->
 		</div>
 		<!-- /#wrapper -->
-		
+
 		<!-- JavaScripts -->
-		
+
 		<!-- jQuery -->
 		<script src="vendors/bower_components/jquery/dist/jquery.min.js"></script>
-		
+
 		<!-- Bootstrap Core JavaScript -->
 		<script src="vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-		
+
 		<!-- Moment JavaScript -->
 		<script type="text/javascript" src="vendors/bower_components/moment/min/moment-with-locales.min.js"></script>
-		
+
 		<!-- Bootstrap Colorpicker JavaScript -->
 		<script src="vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
-				
+
 		<!-- Bootstrap Datetimepicker JavaScript -->
 		<script type="text/javascript" src="vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
-		
+
 		<!-- Bootstrap Daterangepicker JavaScript -->
 		<script src="vendors/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
-		
+
 		<!-- Form Picker Init JavaScript -->
 		<script src="dist/js/form-picker-data.js"></script>
-		
+
 		<!-- Slimscroll JavaScript -->
 		<script src="dist/js/jquery.slimscroll.js"></script>
-	
+
 		<!-- Fancy Dropdown JS -->
 		<script src="dist/js/dropdown-bootstrap-extended.js"></script>
-		
+
 		<!-- Owl JavaScript -->
 		<script src="vendors/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
-	
+
 		<!-- Switchery JavaScript -->
 		<script src="vendors/bower_components/switchery/dist/switchery.min.js"></script>
-	
+
 		<!-- Init JavaScript -->
 		<script src="dist/js/init.js"></script>
-		
+
 		<script>
-		
+
 
 		</script>
 	</body>

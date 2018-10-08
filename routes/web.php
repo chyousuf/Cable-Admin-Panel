@@ -23,5 +23,7 @@ Route::post('/Login','LoginController@Login')->name('login');
 
 // Customer Route
 Route::get('/Customer','CustomerController@customer_form')->name('Addcustomer');
+Route::post('/insert-Customer','CustomerController@insert_customer')->name('insertcustomer');
+
 
 
