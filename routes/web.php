@@ -27,3 +27,15 @@ Route::post('/insert-Customer','CustomerController@insert_customer')->name('inse
 
 
 
+
+
+
+
+
+//Api Route
+
+Route::post('/login_account','ApiController@loginaccount')->name('login_account');
+Route::get('/get_all_customer','ApiController@get_all_customer')->name('get_all_customer');
+Route::post('/get_customer_by_id','ApiController@get_customer_by_id')->name('get_customer_by_id');
+
+
