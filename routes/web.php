@@ -36,6 +36,7 @@ Route::post('/insert-Customer','CustomerController@insert_customer')->name('inse
 
 Route::post('/login_account','ApiController@loginaccount');
 Route::get('/get_all_customer','ApiController@get_all_customer');
-Route::post('/get_customer_by_id','ApiController@get_customer_by_id');
+Route::get('/get_all_collector','ApiController@get_all_collector');
+Route::post('/get_customer_by_collector_id','ApiController@get_customer_by_collector_id');
 
 

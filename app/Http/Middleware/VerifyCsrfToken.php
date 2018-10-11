@@ -12,7 +12,7 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        '/get_customer_by_id',
+        '/get_customer_by_collector_id',
         '/login_account'
     ];
 }

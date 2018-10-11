@@ -16,6 +16,19 @@ class ApiController extends Controller
 
  public function get_all_customer(){
      header("Content-type:application/json");
+     $collector = customer::all()->all();
+     if ($collector > 0){
+
+         return response(['status' => 'true',  'data' => $collector], 200);
+
+     } else {
+         return response(['status' => 'false', 'Code' => 'Database Failure'], 200);
+     }
+
+
+ }
+  public function get_all_collector(){
+     header("Content-type:application/json");
      $collector = Collector::all()->all();
      if ($collector > 0){
 
@@ -49,7 +62,7 @@ class ApiController extends Controller
     }
 
 
-    public function get_customer_by_id(Request $request)
+    public function get_customer_by_collector_id(Request $request)
     {
         header("Content-type:application/json");
 
@@ -60,7 +73,7 @@ class ApiController extends Controller
 
         }
 
-        $collector = Collector::where('id', $collector_id)->get();
+        $collector = customer::where('payment_collector_id', $collector_id)->get();
         if ($collector) {
 
             return response(['status' => 'true', 'data' => $collector], 200);
