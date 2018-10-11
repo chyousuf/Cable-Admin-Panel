@@ -16,7 +16,7 @@ class ApiController extends Controller
 
  public function get_all_customer(){
      header("Content-type:application/json");
-     $collector = Collector::all();
+     $collector = Collector::all()->all();
      if ($collector > 0){
 
          return response(['status' => 'true',  'data' => $collector], 200);
@@ -61,7 +61,7 @@ class ApiController extends Controller
         }
 
         $collector = Collector::where('id', $collector_id)->get();
-        if ($collector > 0) {
+        if ($collector) {
 
             return response(['status' => 'true', 'data' => $collector], 200);
 
