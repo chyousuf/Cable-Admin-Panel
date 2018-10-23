@@ -15,8 +15,7 @@
 
     <!-- Morris Charts CSS -->
     <link href="vendors/bower_components/morris.js/morris.css" rel="stylesheet" type="text/css"/>
-
-    <!-- Data table CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">    <!-- Data table CSS -->
     <link href="vendors/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet"
           type="text/css"/>
 
@@ -391,22 +390,47 @@
                 </a>
                 <ul id="dashboard_dr" class="collapse collapse-level-1">
                     <li>
-                        <a class="active-page" href="{{route('Addcustomer')}}">Add Customer</a>
+                        <a class="active" href="javascript:void(0);" data-toggle="collapse" data-target="#customer_dr">
+                            <div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span class="right-nav-text">CUSTOMER</span>
+                            </div>
+                            <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="customer_dr" class="collapse collapse-level-1">
+                            <li>
+                                <a class="active-page" href="{{route('Addcustomer')}}">Add Customer</a>
+                            </li>
+                            <li>
+                                <a href="{{route('Show_customer')}}">View Customer</a>
+                            </li>
+                        </ul>
                     </li>
                     <li>
-                        <a href="index2.html">Demographic</a>
-                    </li>
                     <li>
-                        <a href="index3.html">Project</a>
+                        <a class="active" href="javascript:void(0);" data-toggle="collapse" data-target="#collector_dr">
+                            <div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span class="right-nav-text">Collector</span>
+                            </div>
+                            <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                        <ul id="collector_dr" class="collapse collapse-level-1">
+                            <li>
+                                <a class="active-page" href="{{route('Addcollector')}}">Add Collector</a>
+                            </li>
+                            <li>
+                                <a href="{{route('Show_collector')}}">View Collector</a>
+                            </li>
+                        </ul>
                     </li>
-                    <li>
-                        <a href="profile.html">profile</a>
-                    </li>
+
+
                 </ul>
+
             </li>
 
 
         </ul>
 
     </div>
+</div>
     <!-- /Left Sidebar Menu -->

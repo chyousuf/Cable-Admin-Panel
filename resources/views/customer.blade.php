@@ -1,5 +1,4 @@
 @include('header');
-
 			<!-- Right Sidebar Menu -->
 			<div class="fixed-sidebar-right">
 				<ul class="right-sidebar">
@@ -466,28 +465,28 @@
 												{{csrf_field()}}
 												<div class="form-group">
 													<label class="control-label mb-10 text-left">Name</label>
-													<input type="text" name="name" class="form-control" value="" placeholder="Name">
+													<input type="text" name="name" class="form-control" value="" placeholder="Name" required>
 												</div>
 												<div class="form-group">
 													<label class="control-label mb-10 text-left" for="example-email">Father name</label>
-													<input type="text" id="example-email" name="father_name" class="form-control" placeholder="Father name">
+													<input type="text" id="example-email" name="father_name" class="form-control" placeholder="Father name" required>
 												</div>
 												<div class="form-group">
 													<label class="control-label mb-10 text-left">Phone number</label>
-													<input type="text" class="form-control" name="phone_number" placeholder="Phone number" value="">
+													<input type="text" class="form-control" name="phone_number" placeholder="Phone number" value="" required>
 												</div>
 												<div class="form-group">
 													<label class="control-label mb-10 text-left">Address </label>
-													<input type="text" name="address" class="form-control" placeholder="Address">
+													<input type="text" name="address" class="form-control" placeholder="Address" required>
 												</div>
 												<div class="form-group">
 													<label class="control-label mb-10 text-left">Region</label>
-													<input type="text" name="region" class="form-control" placeholder="Region">
+													<input type="text" name="region" class="form-control" placeholder="Region" required>
 												</div>
 
 												<div class="form-group">
 													<label class="control-label mb-10 text-left">Amount Paid</label>
-													<input type="text" class="form-control" name="amount_paid" placeholder="Amount Paid">
+													<input type="text" class="form-control" name="amount_paid" placeholder="Amount Paid" required>
 												</div>
 												<div class="form-group">
 													<label class="control-label mb-10 text-left">Mountly Amount</label>
@@ -498,13 +497,15 @@
 													<label class="control-label mb-10 text-left">Payment Status</label>
 													<select name="payment_status" class="form-control">
 														<option value="paid" >Paid</option>
-														<option value="paid">Unpaid</option>
+														<option value="unpaid">Unpaid</option>
 													</select>
 												</div>
 												<div class="form-group mt-30 mb-30">
 													<label class="control-label mb-10 text-left">Payment Collected by</label>
-													<select name="payment_collected_by" class="form-control">
-														<option value="paid" >Paid</option>
+													<select name="payment_collected_by" class="form-control" required>
+														@foreach($collector as $collectors)
+															<option value="{{$collectors->id}}|{{$collectors->name}}" >{{$collectors->name}}</option>
+														@endforeach
 													</select>
 												</div>
 												<div class="col-sm-12">
@@ -518,17 +519,6 @@
 														</div>
 													</div>
 												</div>
-                                                <div class="col-sm-12">
-                                                    <div class="form-group">
-                                                        <label class="control-label mb-10 text-left">Payment Connection Date</label>
-                                                        <div class='input-group date' id='datetimepicker4'>
-                                                            <input type='text' name="payment_connection_date" class="form-control" />
-                                                            <span class="input-group-addon">
-																	<span class="fa fa-calendar"></span>
-																</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
                                                 <br>
                                                 <br>
                                                <center><input type="submit" name="submit" class="btn btn-success"></center>

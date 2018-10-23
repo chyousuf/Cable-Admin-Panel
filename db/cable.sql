@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Oct 08, 2018 at 06:26 PM
+-- Generation Time: Oct 23, 2018 at 07:48 PM
 -- Server version: 5.7.21
 -- PHP Version: 7.2.4
 
@@ -41,8 +41,16 @@ CREATE TABLE IF NOT EXISTS `collectors` (
   `amount_pending` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
+  `password` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `collectors`
+--
+
+INSERT INTO `collectors` (`id`, `name`, `father_name`, `phone_number`, `address`, `region`, `total_payment_collected`, `total_payment_given_to_owner`, `amount_pending`, `created_at`, `updated_at`, `password`) VALUES
+(2, 'Talha', 'yousuf', '043428699554', 'lahore', 'lahore', '-1200', '1200', '-1200', '2018-10-23 12:21:47', '2018-10-23 12:21:47', NULL);
 
 -- --------------------------------------------------------
 
@@ -61,27 +69,34 @@ CREATE TABLE IF NOT EXISTS `customers` (
   `region` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `payment_status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `payment_collected_by` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payment_collection_date` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `monthly_amount` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payment_collection_date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `monthly_amount` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '200',
   `amount_paid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
+  `payment_collector_id` int(11) DEFAULT NULL,
+  `reserve_amount` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `customers`
 --
 
-INSERT INTO `customers` (`id`, `name`, `father_name`, `phone_number`, `address`, `connection_date`, `region`, `payment_status`, `payment_collected_by`, `payment_collection_date`, `monthly_amount`, `amount_paid`, `created_at`, `updated_at`) VALUES
-(1, 'Yousuf', 'javaid', '03428699554', 'Lahore', '10/23/2018 11:04 PM', 'islampura', 'paid', 'paid', '23-12-2018', '200', '200', '2018-10-08 13:04:43', '2018-10-08 13:04:43'),
-(2, 'Yousuf', 'javaid', '03428699554', 'Lahore', '10/23/2018 11:04 PM', 'islampura', 'paid', 'paid', '23-12-2018', '200', '200', '2018-10-08 13:04:59', '2018-10-08 13:04:59'),
-(3, 'jhon', 'taylor', '0987654', '123as', '10/24/2018 11:10 PM', 'asd', 'paid', 'paid', '21', '211', '112', '2018-10-08 13:10:25', '2018-10-08 13:10:25'),
-(4, 'jhon', 'taylor', '0987654', '123as', '10/24/2018 11:10 PM', 'asd', 'paid', 'paid', '21', '211', '112', '2018-10-08 13:10:52', '2018-10-08 13:10:52'),
-(5, 'jhon', 'taylor', '0987654', '123as', '10/24/2018 11:10 PM', 'asd', 'paid', 'paid', '21', '211', '112', '2018-10-08 13:15:18', '2018-10-08 13:15:18'),
-(6, 'jhon', 'taylor', '0987654', '123as', '10/24/2018 11:10 PM', 'asd', 'paid', 'paid', '21', '211', '112', '2018-10-08 13:15:44', '2018-10-08 13:15:44'),
-(7, 'jhon', 'taylor', '0987654', '123as', '10/24/2018 11:10 PM', 'asd', 'paid', 'paid', '21', '211', '112', '2018-10-08 13:17:12', '2018-10-08 13:17:12'),
-(8, 'jhon', 'taylor', '0987654', '123as', '10/24/2018 11:10 PM', 'asd', 'paid', 'paid', '21', '211', '112', '2018-10-08 13:19:10', '2018-10-08 13:19:10');
+INSERT INTO `customers` (`id`, `name`, `father_name`, `phone_number`, `address`, `connection_date`, `region`, `payment_status`, `payment_collected_by`, `payment_collection_date`, `monthly_amount`, `amount_paid`, `created_at`, `updated_at`, `payment_collector_id`, `reserve_amount`) VALUES
+(20, 'yousuf', 'javaid', '03428699554', 'lahore', '10/31/2018 12:24 AM', 'lahore', 'paid', 'Talha', NULL, '200', '200', '2018-10-23 14:25:06', '2018-10-23 14:25:06', 2, '0'),
+(21, 'yousf', 'javaid', '0342869954', 'lahore', '11/05/2018 12:26 AM', 'lahore', 'paid', 'Talha', NULL, '200', '200', '2018-10-23 14:26:17', '2018-10-23 14:26:17', 2, '0'),
+(22, 'yousf', 'javaid', '0342869954', 'lahore', '11/05/2018 12:26 AM', 'lahore', 'paid', 'Talha', NULL, '200', '200', '2018-10-23 14:30:41', '2018-10-23 14:30:41', 2, '0'),
+(23, 'djhfh', 'dfdf', '65', 'dbfdf', '10/30/2018 12:34 AM', 'fdf', 'paid', 'Talha', NULL, '123', '45', '2018-10-23 14:35:01', '2018-10-23 14:35:01', 2, '0'),
+(9, 'dds', 'ds', 'dssd', 'dfsdf', '10/03/2018 6:45 PM', 'dffsdfsdf', 'paid', 'paid', '12-12-28', 'dffdf', 'fsdfsdf', '2018-10-21 08:47:43', '2018-10-21 08:47:43', NULL, '0'),
+(24, 'qw', 'qw', '232', 'as', '10/29/2018 12:37 AM', 'wq', 'paid', 'Talha', NULL, '12', '23', '2018-10-23 14:37:45', '2018-10-23 14:37:45', 2, '0'),
+(12, 'dds', 'ds', 'dssd', 'dfsdf', '10/03/2018 6:45 PM', 'dffsdfsdf', 'paid', 'paid', '12-12-28', 'dffdf', 'fsdfsdf', '2018-10-21 08:58:07', '2018-10-21 08:58:07', NULL, '0'),
+(13, 'dds', 'ds', 'dssd', 'dfsdf', '10/03/2018 6:45 PM', 'dffsdfsdf', 'paid', 'paid', '12-12-28', 'dffdf', 'fsdfsdf', '2018-10-21 08:58:41', '2018-10-21 08:58:41', NULL, '0'),
+(14, 'dds', 'ds', 'dssd', 'dfsdf', '10/03/2018 6:45 PM', 'dffsdfsdf', 'paid', 'paid', '12-12-28', 'dffdf', 'fsdfsdf', '2018-10-21 09:02:07', '2018-10-21 09:02:07', NULL, '0'),
+(15, 'dds', 'ds', 'dssd', 'dfsdf', '10/03/2018 6:45 PM', 'dffsdfsdf', 'paid', 'paid', '12-12-28', 'dffdf', 'fsdfsdf', '2018-10-21 09:03:54', '2018-10-21 09:03:54', NULL, '0'),
+(16, 'dds', 'ds', 'dssd', 'dfsdf', '10/03/2018 6:45 PM', 'dffsdfsdf', 'paid', 'paid', '12-12-28', 'dffdf', 'fsdfsdf', '2018-10-21 09:04:16', '2018-10-21 09:04:16', NULL, '0'),
+(17, 'YOusuf', 'ds', 'dssd', 'dfsdf', '10/03/2018 6:45 PM', 'dffsdfsdf', 'unpaid', 'Talha', '12-12-28', 'dffdf', 'fsdfsdf', '2018-10-21 09:04:41', '2018-10-21 09:04:41', 2, '0'),
+(18, 'CHAUDHRY', 'JAVAID', '03428699554', 'LAHORE', '11/30/2018 7:08 PM', 'lAHORE', 'paid', 'paid', NULL, '200', '100', '2018-10-21 09:09:22', '2018-10-21 09:09:22', NULL, '0');
 
 -- --------------------------------------------------------
 
