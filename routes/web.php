@@ -41,17 +41,6 @@ Route::get('/Collector_Edit/{id}','CollectorController@collector_Edit');
 Route::post('/Edit-Collector/{id}','CollectorController@Edit_collector_db')->name('Edit_collector_db');
 
 
-
-
-
-
-
-
-
-
-
-
-
 //Api Route
 
 Route::post('/login_account','ApiController@loginaccount');
